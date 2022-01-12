@@ -12,12 +12,11 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QTableWidgetItem,
 
 import resources
 
-GEOMETRY = (400, 400, 2000, 800)
-
 def resource_path(relative):
     if hasattr(sys, '_MEIPASS'):
         return path.join(sys._MEIPASS, relative)
     return path.join(relative)
+
 
 class Board(QMainWindow):  # первая форма - главное окно игры
     date: dt.date
@@ -92,7 +91,7 @@ class Board(QMainWindow):  # первая форма - главное окно �
 
     def game(self):  # запуск процесса игры
         self.stackedWidget.setCurrentIndex(1)
-        self.i += 1
+        self.i += 1  #i - это количество уже заданных вопросов
         self.subject_number = randrange(1, self.questions)
         # случайным образом выбираем, вопрос про какой объект карты будет задаваться
         self.now_subject = self.data[self.subject_number - 1].split(';')[1]
